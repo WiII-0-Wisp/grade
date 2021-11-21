@@ -10,7 +10,7 @@ int main() {
 	SetConsoleOutputCP(1251);
 
 	int N, max_i;
-	double sum, sum_coef, max;
+	double sum, sum_coef, max; 
 	string* names;
 	double** mas;
 	double* mas_sum, * mas_coef;
@@ -35,14 +35,15 @@ int main() {
 			mas[j][i] = 1 / mas[i][j];
 		}
 	}
-	cout << endl;
+
+	cout << "\n\n----------Заполнение таблицы----------\n\n";
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
 			cout << mas[i][j] << " ";
 		}
 		cout << endl;
 	}
-	cout << endl;
+	cout << "\n----------Считаю сумму----------\n\n";
 
 	sum = 0;
 	for (int i = 0; i < N; i++) {
@@ -56,19 +57,19 @@ int main() {
 	for (int i = 0; i < N; i++) {
 		cout << mas_sum[i] << " ";
 	}
-	cout << "\nИтого: " << sum << endl << endl;
+	cout << "\nИтого: " << sum;
 
 	sum_coef = 0;
 	for (int i = 0; i < N; i++) {
 		mas_coef[i] = mas_sum[i] / sum;
 		sum_coef += mas_coef[i];
 	}
+	cout << "\n\n----------После деления----------\n\n";
 
 	for (int i = 0; i < N; i++) {
 		cout << mas_coef[i] << " ";
 	}
 	cout << "\nИтого: " << sum_coef;
-
 	cout << "\n\n----------Округление----------\n\n";
 
 	sum_coef = 0;
@@ -78,7 +79,6 @@ int main() {
 		cout << mas_coef[i] << " ";
 	}
 	cout << "\nИтого: " << sum_coef;
-
 	cout << "\n\n----------Пересчёт округления----------\n\n";
 
 	max = -1;
@@ -105,8 +105,7 @@ int main() {
 	for (int i = 0; i < N; i++) {
 		delete[] mas[i];
 	}
-	delete[] names, mas;
-	system("pause");
+	delete[] names, mas, mas_sum, mas_coef;
 	return 0;
 }
 
